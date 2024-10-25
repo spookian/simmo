@@ -4,6 +4,12 @@ using System;
 public partial class EntityState : Node
 {
 	protected Entity owner;
+	
+	public string getName()
+	{
+		return "null";
+	}
+
 	// Called when the node enters the scene tree for the first time.
 	public EntityState(Entity _owner)
 	{

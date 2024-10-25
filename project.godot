@@ -75,6 +75,7 @@ builder_lmb={
 3d_physics/layer_4="Friend Hitboxes"
 3d_physics/layer_5="Enemy Hurtboxes"
 3d_physics/layer_6="Enemy Hitboxes"
+3d_physics/layer_7="Players"
 
 [rendering]
 

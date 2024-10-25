@@ -10,17 +10,11 @@ public partial class Player : Entity
 		var clientMgr = GetNode("/root/GameManager").GetChild<GodotObject>(0);
 		clientMgr.Set("cur_player", this);
 		
-		state = new PlayerIdle(this);
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		base._Process(delta);
+		state = new PlayerStates.Idle(this);
 	}
 
 	public override void switchStateIdle()
 	{
-		state = new PlayerIdle(this);
+		state = new PlayerStates.Idle(this);
 	}
 }

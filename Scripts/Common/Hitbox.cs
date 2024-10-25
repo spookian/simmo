@@ -14,7 +14,6 @@ public partial class Hitbox : Area3D
 	{
 		this.Monitoring = true;
 		this.Monitorable = true;
-		knockbackDirection = knockbackDirection * Basis.FromEuler( new Vector3(0.0f, GetParent<Node3D>().Rotation.Y, 0.0f) );
 		//GD.Print(knockbackStrength);
 	}
 
@@ -36,6 +35,8 @@ public partial class Hitbox : Area3D
 	public override void _Process(double delta)
 	{
 		updateAlignment();
+		// update direction
+		knockbackDirection = knockbackDirection * Basis.FromEuler( new Vector3(0.0f, GlobalRotation.Y, 0.0f) );
 
 	}
 }

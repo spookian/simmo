@@ -35,7 +35,6 @@ public partial class Entity : CharacterBody3D
 	[Export]
 	public Area3D hurtBox;
 
-
 	// delegate definitions, might contain these in a subclass
 	// no enter proc functions because those already happened silly
 	// these are mostly for passives but actives can use them too. Actives should mostly rely on states though
@@ -145,10 +144,5 @@ public partial class Entity : CharacterBody3D
 	public virtual void switchStateIdle()
 	{
 		state = new EntityState(this);
-	}
-
-	Entity findNearestEnemy()
-	{
-		return new Entity();
 	}
 }

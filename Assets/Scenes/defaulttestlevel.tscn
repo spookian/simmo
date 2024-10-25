@@ -19,6 +19,7 @@ size = Vector3(9.5, 0.5, 9.5)
 
 [node name="Player" parent="." instance=ExtResource("1_21pgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503368, 0)
+collision_layer = 64
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.17611, 0)

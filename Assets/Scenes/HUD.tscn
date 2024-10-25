@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccr2gduaf4wa6"]
+
+[ext_resource type="PackedScene" uid="uid://bkgq24wy7ubk6" path="res://Assets/Scenes/SkillBar.tscn" id="1_w4lt5"]
+[ext_resource type="PackedScene" uid="uid://dx5ih645u2ykm" path="res://Assets/Scenes/BuilderHud.tscn" id="2_wmh20"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SkillBar" parent="." instance=ExtResource("1_w4lt5")]
+layout_mode = 1
+offset_top = -89.0
+offset_bottom = -13.0
+
+[node name="Control" parent="." instance=ExtResource("2_wmh20")]
+layout_mode = 1

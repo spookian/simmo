@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://ii5epb1pyoc2"]
+
+[ext_resource type="Theme" uid="uid://3yj2v8h5suem" path="res://Assets/Presets/skillbar.tres" id="1_aueel"]
+[ext_resource type="Script" path="res://Scripts/UI/SkillButton.cs" id="2_aym18"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwtnm"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+anti_aliasing = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r1p1i"]
+blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_b8wnr"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8b8lh"]
+gradient = SubResource("Gradient_b8wnr")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_0potp"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_748ft"]
+gradient = SubResource("Gradient_0potp")
+width = 1
+
+[node name="Button" type="Button"]
+clip_contents = true
+offset_right = 60.0
+offset_bottom = 60.0
+focus_mode = 0
+theme = ExtResource("1_aueel")
+script = ExtResource("2_aym18")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Button" type="Button" parent="CanvasGroup"]
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+theme = ExtResource("1_aueel")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xwtnm")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasGroup"]
+material = SubResource("CanvasItemMaterial_r1p1i")
+offset_right = 60.0
+offset_bottom = 60.0
+step = 0.01
+value = 74.25
+fill_mode = 5
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_8b8lh")
+texture_progress = SubResource("GradientTexture1D_748ft")
+tint_under = Color(1, 1, 1, 0.333333)
+tint_progress = Color(1, 1, 1, 0)
+
+[connection signal="pressed" from="." to="." method="onPressed"]

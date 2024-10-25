@@ -1,0 +1,150 @@
+[gd_scene load_steps=25 format=3 uid="uid://c4xi5ujcow1v5"]
+
+[ext_resource type="Script" path="res://Scripts/UI/HealthBar.gd" id="1_todrv"]
+[ext_resource type="Texture2D" uid="uid://dy5db660kysw7" path="res://Assets/Sprites/hud/enemyHP.png" id="2_tccvm"]
+[ext_resource type="Texture2D" uid="uid://ct0ixjkn62agc" path="res://Assets/Sprites/hud/hpContainer.png" id="3_sqtqc"]
+[ext_resource type="AnimationLibrary" uid="uid://c0o8vfwpsi4jf" path="res://Assets/Scenes/HealthBarAnimations.res" id="4_5sie7"]
+[ext_resource type="Texture2D" uid="uid://cowblyr2of1mn" path="res://Assets/Sprites/hud/enemyHPLabel.png" id="5_3ri58"]
+
+[sub_resource type="Gradient" id="Gradient_nw4fg"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2hjkc"]
+gradient = SubResource("Gradient_nw4fg")
+width = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nc04f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm8yc"]
+bg_color = Color(0.968627, 0, 0.776471, 1)
+border_width_bottom = 60
+border_color = Color(0.780392, 0, 0.752941, 1)
+border_blend = true
+corner_detail = 1
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_d1imt"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gua2a"]
+animation = &"HealthBarFlash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3bn32"]
+animation = &"HealthIdle"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l5k57"]
+graph_offset = Vector2(-65.9505, -29.9669)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_d1imt")
+nodes/Add2/position = Vector2(544, 136.667)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_3bn32")
+nodes/Animation/position = Vector2(160, 106.667)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_gua2a")
+"nodes/Animation 2/position" = Vector2(306.667, 323.333)
+nodes/output/position = Vector2(800, 160)
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_iuk2r"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_01vjl"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hbnmn"]
+animation = &"HealthIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_70ttx"]
+animation = &"HealthBarFlash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f46uu"]
+animation = &"Death"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bqody"]
+graph_offset = Vector2(-492.696, 139.925)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_01vjl")
+nodes/Add2/position = Vector2(53.3333, 106.667)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_iuk2r")
+"nodes/Add2 2/position" = Vector2(293.333, 133.333)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_f46uu")
+nodes/Animation/position = Vector2(-213.333, 186.667)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_hbnmn")
+"nodes/Animation 2/position" = Vector2(-213.333, 346.667)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_70ttx")
+"nodes/Animation 3/position" = Vector2(53.3333, 346.667)
+nodes/output/position = Vector2(453.333, 133.333)
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 3", &"output", 0, &"Add2 2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_22cri"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ix4f4"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_15iro"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8be65"]
+states/Idle/node = SubResource("AnimationNodeBlendTree_l5k57")
+states/Idle/position = Vector2(438.667, 100.667)
+states/Start/position = Vector2(238.667, 100.417)
+states/death/node = SubResource("AnimationNodeBlendTree_bqody")
+states/death/position = Vector2(653.333, 99.1358)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_22cri"), "Idle", "death", SubResource("AnimationNodeStateMachineTransition_ix4f4"), "death", "End", SubResource("AnimationNodeStateMachineTransition_15iro")]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o3o1h"]
+graph_offset = Vector2(-546.86, 140.245)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_8be65")
+nodes/StateMachine/position = Vector2(-213.333, 160)
+nodes/output/position = Vector2(480, 106.667)
+node_connections = [&"output", 0, &"StateMachine"]
+
+[node name="HealthVial" type="Node2D" node_paths=PackedStringArray("progBar", "barContainer", "animTree")]
+texture_filter = 1
+script = ExtResource("1_todrv")
+progBar = NodePath("BarContainer/ProgressBar")
+barContainer = NodePath("BarContainer")
+animTree = NodePath("AnimationTree")
+
+[node name="Back" type="Sprite2D" parent="."]
+texture = ExtResource("2_tccvm")
+
+[node name="BarContainer" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="BarContainer"]
+scale = Vector2(143, 10)
+texture = SubResource("GradientTexture1D_2hjkc")
+
+[node name="ProgressBar" type="ProgressBar" parent="BarContainer"]
+offset_left = -69.5
+offset_top = -3.0
+offset_right = 69.5
+offset_bottom = 57.0
+scale = Vector2(1, 0.1)
+theme_override_styles/background = SubResource("StyleBoxEmpty_nc04f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gm8yc")
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Fadeout" type="Sprite2D" parent="BarContainer"]
+modulate = Color(1, 1, 1, -0.419621)
+scale = Vector2(146, 10)
+texture = SubResource("GradientTexture1D_2hjkc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BarContainer"]
+texture = ExtResource("3_sqtqc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("4_5sie7")
+}
+
+[node name="Label" type="Sprite2D" parent="."]
+position = Vector2(0, 23)
+texture = ExtResource("5_3ri58")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+callback_mode_discrete = 1
+tree_root = SubResource("AnimationNodeBlendTree_o3o1h")
+anim_player = NodePath("../AnimationPlayer")
+parameters/StateMachine/conditions/dead = false
+parameters/StateMachine/Idle/Add2/add_amount = 1.0
+parameters/StateMachine/death/Add2/add_amount = 1.0
+"parameters/StateMachine/death/Add2 2/add_amount" = 1.0

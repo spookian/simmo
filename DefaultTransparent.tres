@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://msna3l0n43kb"]
+
+[ext_resource type="Shader" path="res://Assets/Shader/EntityTransparent.gdshader" id="1_4d75s"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_4d75s")
+shader_parameter/billboarded = false
+shader_parameter/base_color = Vector3(1, 1, 1)
+shader_parameter/highlight_color = Vector3(1, 0, 0)
+shader_parameter/highlighted = true
+shader_parameter/alpha = 128.0

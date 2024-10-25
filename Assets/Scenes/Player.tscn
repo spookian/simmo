@@ -1,0 +1,171 @@
+[gd_scene load_steps=15 format=3 uid="uid://5njfbuyat7y1"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/Player.cs" id="1_kw6ll"]
+[ext_resource type="Shape3D" uid="uid://86wiij1x0ket" path="res://Assets/PlayerHitbox.tres" id="2_jlolb"]
+[ext_resource type="Texture2D" uid="uid://en63tarvpfp2" path="res://Assets/Sprites/test.png" id="3_4fey6"]
+[ext_resource type="PackedScene" uid="uid://b5ptujta7j4y7" path="res://Assets/Model/PlayerBase.blend" id="4_ddx6s"]
+[ext_resource type="Texture2D" uid="uid://bhygpakqxqw2o" path="res://Assets/Sprites/PlayerHead.png" id="5_ume0x"]
+[ext_resource type="Texture2D" uid="uid://bpmuvlvtfip0y" path="res://Assets/Sprites/glasses.png" id="6_l6c7n"]
+[ext_resource type="PackedScene" uid="uid://c4xi5ujcow1v5" path="res://Assets/Scenes/EntityHP.tscn" id="7_t3sa2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ckk2g"]
+radius = 0.335
+height = 1.24
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_al0a7"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 1
+albedo_texture = ExtResource("5_ume0x")
+texture_filter = 0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_hu3rq"]
+material = SubResource("StandardMaterial3D_al0a7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgiu1"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("6_l6c7n")
+texture_filter = 0
+texture_repeat = false
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_a2wsi"]
+material = SubResource("StandardMaterial3D_bgiu1")
+size = Vector2(1.17, 0.24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_www3t"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 1
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = ExtResource("3_4fey6")
+texture_filter = 0
+texture_repeat = false
+disable_receive_shadows = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ok1al"]
+material = SubResource("StandardMaterial3D_www3t")
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hpBar", "meshList", "animPlayer", "hurtBox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000422239, -0.00583196, -0.00483203)
+script = ExtResource("1_kw6ll")
+hpBar = NodePath("HealthVial")
+meshList = []
+animPlayer = NodePath("Mesh/AnimationPlayer")
+hurtBox = NodePath("Hurtbox")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape3D_ckk2g")
+
+[node name="ColliderShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0666835)
+shape = ExtResource("2_jlolb")
+
+[node name="Mesh" parent="." instance=ExtResource("4_ddx6s")]
+transform = Transform3D(-0.25553, 0, -2.23391e-08, 0, 0.25553, 0, 2.23391e-08, 0, -0.25553, 0, -0.194738, 0.00409553)
+
+[node name="Skeleton3D" parent="Mesh/Armature" index="0"]
+bones/0/position = Vector3(-2.60825e-17, -0.100076, 0.0306431)
+bones/0/rotation = Quaternion(0.0351379, -1.3338e-17, -1.3338e-17, 0.999382)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(0.132708, 2.3631e-07, 3.16401e-08, 0.991155)
+bones/2/position = Vector3(3.8381e-14, 0.690342, 1.46522e-09)
+bones/2/rotation = Quaternion(0.173396, -4.61674e-14, 8.26816e-08, 0.984852)
+bones/3/position = Vector3(0.652275, 0.807247, 0.0458185)
+bones/3/rotation = Quaternion(-0.00790022, -0.0345158, -0.704768, 0.708553)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(1.85957e-07, 0.481027, 1.74917e-09)
+bones/4/rotation = Quaternion(-0.0190126, -0.00582599, -0.0027448, 0.999799)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.0164572, 0.00576162, 0.00858623, 0.999811)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.472131, -0.00142204, 0.00478335, 0.881514)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0121899, -7.62739e-06, -0.00511032, 0.999913)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.0718032, 6.44657e-05, -0.00489347, 0.997407)
+bones/9/rotation = Quaternion(0.00487849, 0.00581744, -0.00348741, 0.999965)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.0206962, -0.000132805, -0.00481753, 0.999774)
+bones/11/rotation = Quaternion(-0.0109073, 0.00547716, -0.00332436, 0.99992)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(0.0633519, -0.000208905, -0.00368329, 0.997984)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(0.00270977, 0.00457595, -0.00334298, 0.99998)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(-0.652275, 0.807247, 0.0458185)
+bones/14/rotation = Quaternion(-0.00790022, 0.0345158, 0.704768, 0.708553)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(-1.85957e-07, 0.481027, 1.74917e-09)
+bones/15/rotation = Quaternion(-0.0190126, 0.00582599, 0.0027448, 0.999799)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.0164572, -0.00576162, -0.00858623, 0.999811)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(0.472131, 0.00142204, -0.00478335, 0.881514)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.0121899, 7.62739e-06, 0.00511032, 0.999913)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(0.0461918, 0.442219, -0.178439)
+bones/19/rotation = Quaternion(-0.0718032, -6.44657e-05, 0.00489347, 0.997407)
+bones/20/rotation = Quaternion(0.00487849, -0.00581744, 0.00348741, 0.999965)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/position = Vector3(0.0479648, 0.443611, -0.00614269)
+bones/21/rotation = Quaternion(-0.0206962, 0.000132805, 0.00481753, 0.999774)
+bones/22/rotation = Quaternion(-0.0109073, -0.00547716, 0.00332436, 0.99992)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/position = Vector3(0.0494998, 0.449768, 0.150397)
+bones/23/rotation = Quaternion(0.0633519, 0.000208905, 0.00368329, 0.997984)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(0.00270977, -0.00457595, 0.00334298, 0.99998)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/position = Vector3(0.374526, -0.216996, 0.0487856)
+bones/25/rotation = Quaternion(0.999416, -0.00769378, 0.000353334, 0.0332863)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(0.049894, 0.000833454, -0.00108266, 0.998754)
+bones/27/rotation = Quaternion(-0.712391, 0.00349972, -0.00575289, 0.70175)
+bones/27/scale = Vector3(1, 1, 1)
+bones/28/position = Vector3(-0.374526, -0.216996, 0.0487856)
+bones/28/rotation = Quaternion(0.999416, 0.00769378, -0.000353334, 0.0332863)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/rotation = Quaternion(0.049894, -0.000833454, 0.00108266, 0.998754)
+
+[node name="arms" parent="Mesh/Armature/Skeleton3D" index="0"]
+visible = false
+
+[node name="Sphere" parent="Mesh/Armature/Skeleton3D" index="2"]
+visible = false
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 2.27374e-13, 4.76837e-07, 3.01699e-07, 0.77439, -0.632708, -3.69258e-07, 0.632708, 0.77439, 1.45537e-14, 1.08985, 0.296478)
+bone_name = "Head"
+bone_idx = 2
+
+[node name="Head" type="MeshInstance3D" parent="Mesh/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(2.218, 5.75641e-07, -8.19015e-07, -2.73942e-13, 1.47754, 1.40335, 1.05762e-06, -1.20721, 1.7176, 6.37527e-08, 0.711229, -0.133699)
+mesh = SubResource("QuadMesh_hu3rq")
+skeleton = NodePath("../..")
+
+[node name="Eyes" type="MeshInstance3D" parent="Mesh/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1.869, 5.63875e-07, -6.90144e-07, -1.58617e-13, 1.44734, 1.18253, 8.9121e-07, -1.18253, 1.44734, 0, 0.852, 0.224)
+sorting_offset = 0.08
+mesh = SubResource("QuadMesh_a2wsi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(-3.79402, -1.65699e-07, -8.69269e-15, 0, -8.28494e-08, 2.27476, -3.31683e-07, 1.89537, 9.94329e-08, -2.86725e-07, -0.693703, 3.27976)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ok1al")
+skeleton = NodePath("../..")
+
+[node name="HealthVial" parent="." instance=ExtResource("7_t3sa2")]
+
+[editable path="Mesh"]

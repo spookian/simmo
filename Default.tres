@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://nwmubxnd2l72"]
+
+[ext_resource type="Shader" path="res://Assets/Shader/Entity.gdshader" id="1_ik4sd"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_ik4sd")
+shader_parameter/base_color = Vector3(1, 1, 1)

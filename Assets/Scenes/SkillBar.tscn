@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkgq24wy7ubk6"]
+
+[ext_resource type="Theme" uid="uid://3yj2v8h5suem" path="res://Assets/Presets/skillbar.tres" id="1_dkh0u"]
+[ext_resource type="PackedScene" uid="uid://ii5epb1pyoc2" path="res://Assets/Scenes/SkillButton.tscn" id="2_c83xr"]
+
+[node name="SkillBar" type="Panel"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -344.0
+offset_top = -88.0
+offset_right = 344.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("1_dkh0u")
+
+[node name="Button" parent="." instance=ExtResource("2_c83xr")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 68.0
+offset_bottom = 67.0
+
+[node name="Button2" parent="." instance=ExtResource("2_c83xr")]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 68.0
+
+[node name="Button3" parent="." instance=ExtResource("2_c83xr")]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 8.0
+offset_right = 204.0
+offset_bottom = 68.0
+
+[node name="Button4" parent="." instance=ExtResource("2_c83xr")]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 8.0
+offset_right = 272.0
+offset_bottom = 68.0
+
+[node name="Button5" parent="." instance=ExtResource("2_c83xr")]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 8.0
+offset_right = 340.0
+offset_bottom = 68.0
+
+[node name="Button6" parent="." instance=ExtResource("2_c83xr")]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 8.0
+offset_right = 408.0
+offset_bottom = 68.0
+
+[node name="Button7" parent="." instance=ExtResource("2_c83xr")]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 8.0
+offset_right = 476.0
+offset_bottom = 68.0
+
+[node name="Button8" parent="." instance=ExtResource("2_c83xr")]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 8.0
+offset_right = 544.0
+offset_bottom = 68.0
+
+[node name="Button9" parent="." instance=ExtResource("2_c83xr")]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 8.0
+offset_right = 612.0
+offset_bottom = 68.0
+
+[node name="Button10" parent="." instance=ExtResource("2_c83xr")]
+layout_mode = 0
+offset_left = 620.0
+offset_top = 8.0
+offset_right = 680.0
+offset_bottom = 68.0

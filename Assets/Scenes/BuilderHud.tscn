@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=3 uid="uid://dx5ih645u2ykm"]
+
+[ext_resource type="Texture2D" uid="uid://6h5vcf2x2ua6" path="res://Assets/Sprites/Homestuck_Spirograph_Logo.png" id="1_xcc3f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adr8m"]
+bg_color = Color(0.0316666, 0.95, 0, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.156863, 0.827451, 0.133333, 1)
+border_blend = true
+corner_radius_top_left = 157
+corner_radius_top_right = 157
+corner_radius_bottom_right = 157
+corner_radius_bottom_left = 157
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vm7tc"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+corner_detail = 12
+shadow_color = Color(0, 0, 0, 0.211765)
+shadow_size = 2
+shadow_offset = Vector2(-3.59, 0.485)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqf8x"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 35
+border_width_bottom = 39
+border_color = Color(0.900705, 0.900705, 0.900704, 1)
+border_blend = true
+corner_radius_top_left = 155
+corner_radius_top_right = 155
+corner_radius_bottom_right = 223
+corner_radius_bottom_left = 223
+corner_detail = 12
+expand_margin_bottom = 17.0
+shadow_color = Color(0, 0, 0, 0.141176)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk07j"]
+bg_color = Color(0, 0.847059, 0, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+corner_detail = 12
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rva0"]
+bg_color = Color(0, 0.792157, 0, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+corner_detail = 12
+shadow_color = Color(0, 0, 0, 0)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+offset_bottom = -548.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.30512, 1.30512)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -90.0
+offset_top = -91.0
+offset_right = 162.0
+offset_bottom = 132.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_adr8m")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -16.0
+offset_right = 59.0
+offset_bottom = 61.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vm7tc")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+modulate = Color(0.260667, 0.92, 0, 1)
+layout_mode = 0
+offset_left = 23.0
+offset_top = 21.0
+offset_right = 69.0
+offset_bottom = 67.0
+texture = ExtResource("1_xcc3f")
+expand_mode = 1
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 116.0
+offset_top = -22.0
+offset_right = 1238.0
+offset_bottom = 43.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kqf8x")
+
+[node name="Panel5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 34.0
+offset_right = 121.0
+offset_bottom = 102.0
+scale = Vector2(1.02509, 1.02509)
+tooltip_text = "kys"
+theme_override_styles/panel = SubResource("StyleBoxFlat_wk07j")
+
+[node name="Panel4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 37.0
+offset_right = 124.0
+offset_bottom = 106.0
+tooltip_text = "kys"
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rva0")

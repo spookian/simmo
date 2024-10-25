@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://db2uqioi3d81v"]
+
+[ext_resource type="PackedScene" uid="uid://5njfbuyat7y1" path="res://Assets/Scenes/Player.tscn" id="1_21pgf"]
+[ext_resource type="PackedScene" uid="uid://ccr2gduaf4wa6" path="res://Assets/Scenes/HUD.tscn" id="2_5irag"]
+[ext_resource type="PackedScene" uid="uid://dx0hj0amvv43v" path="res://Assets/Scenes/TestEnemy.tscn" id="4_25ri2"]
+[ext_resource type="PackedScene" uid="uid://lw20hxjsjn4d" path="res://Assets/Scenes/PGO.tscn" id="5_5o2b2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vv8bh"]
+size = Vector3(9.5, 0.5, 9.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyl1m"]
+albedo_color = Color(0.529067, 0.529067, 0.529067, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jtcf2"]
+material = SubResource("StandardMaterial3D_jyl1m")
+size = Vector3(9.5, 0.5, 9.5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_21pgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503368, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.17611, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.919428, 0)
+shape = SubResource("BoxShape3D_vv8bh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.919428, 0)
+mesh = SubResource("BoxMesh_jtcf2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0375507, 0.999295, 0, -0.999295, 0.0375507, 0, 7.60832, 0)
+
+[node name="HUD" parent="." instance=ExtResource("2_5irag")]
+
+[node name="TestEnemy" parent="." instance=ExtResource("4_25ri2")]
+transform = Transform3D(-1.70474e-08, 0, -0.39, 0, 0.39, 0, 0.39, 0, -1.70474e-08, 2.88842, 0.491661, 0)
+
+[node name="PGO" parent="." instance=ExtResource("5_5o2b2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443518, -1.91324)
+
+[node name="PGO2" parent="." instance=ExtResource("5_5o2b2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45571, -1.91324)
+
+[node name="PGO3" parent="." instance=ExtResource("5_5o2b2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28609, -1.91324)

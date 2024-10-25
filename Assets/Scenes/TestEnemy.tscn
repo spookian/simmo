@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://dx0hj0amvv43v"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/TestEnemy.cs" id="1_4h4hs"]
+[ext_resource type="Script" path="res://Scripts/Common/Hitbox.cs" id="2_dtfhm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30qvw"]
+albedo_color = Color(0.219501, 0.219501, 0.219501, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r7cj6"]
+material = SubResource("StandardMaterial3D_30qvw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2edik"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yeuf7"]
+material = SubResource("StandardMaterial3D_2edik")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8xjv1"]
+radius = 0.685
+height = 2.32
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rnnvm"]
+radius = 0.58
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcu8f"]
+
+[node name="TestEnemy" type="CharacterBody3D" node_paths=PackedStringArray("meshList")]
+transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0, 0, 0)
+script = ExtResource("1_4h4hs")
+meshList = []
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_r7cj6")
+
+[node name="HitboxRep" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("BoxMesh_yeuf7")
+
+[node name="HurtBox" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("CapsuleShape3D_8xjv1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_rnnvm")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("2_dtfhm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.993243)
+shape = SubResource("BoxShape3D_mcu8f")
